@@ -6,48 +6,116 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     return render_template('home.html')
-
 @app.route("/On")
 def On():
-    sp.call(["irsend", "SEND_ONCE", "Lights", "Key_Power"])
+    sp.call(["irsend", "SEND_ONCE", "Dorm", "KEY_POWER"])
     print("Lights On / Off")
     return home()
-
-@app.route("/BrightUp")
-def BrightUp():
-    sp.call(["irsend", "SEND_ONCE", "Lights", "Key_0"])
-    print("Brighter")
+@app.route("/Bright")
+def Bright():
+    sp.call(["irsend", "SEND_ONCE", "Dorm", "KEY_BRIGHTER"])
+    print("Lights On / Off")
     return home()
-
-@app.route("/BrightDown")
-def BrightDown():
-    sp.call(["irsend", "SEND_ONCE", "Lights", "Key_1"])
-    print("Dimer")
+@app.route("/Dark")
+def Dark():
+    sp.call(["irsend", "SEND_ONCE", "dorm", "KEY_DARKER"])
+    print("Lights On / Off")
     return home()
-
+@app.route("/Red")
+def Red():
+    sp.call(["irsend", "SEND_ONCE", "Dorm", "KEY_R"])
+    print("Lights On / Off")
+    return home()
+@app.route("/Green")
+def Green():
+    sp.call(["irsend", "SEND_ONCE", "Dorm", "KEY_G"])
+    print("Lights On / Off")
+    return home()
+@app.route("/Blue")
+def Blue():
+    sp.call(["irsend", "SEND_ONCE", "Dorm", "KEY_B"])
+    print("Lights On / Off")
+    return home()
 @app.route("/White")
 def White():
-    sp.call(["irsend", "SEND_ONCE", "Lights", "Key_2"])
-    print("White")
+    sp.call(["irsend", "SEND_ONCE", "Dorm", "KEY_W"])
+    print("Lights On / Off")
     return home()
-
-@app.route("/Color")
-def Color():
-    sp.call(["irsend", "SEND_ONCE", "Lights", "Key_3"])
-    print("Color")
+@app.route("/Orange")
+def Orange():
+    sp.call(["irsend", "SEND_ONCE", "Dorm", "KEY_O"])
+    print("Lights On / Off")
     return home()
-
-@app.route("/ChangeColor")
-def ChangeColor():
-    sp.call(["irsend", "SEND_ONCE", "Lights", "Key_4"])
-    print("Change Color")
-    return home()
-
-@app.route("/Sunrise")
-def Sunrise():
-    sp.call(["irsend", "SEND_ONCE", "Lights", "Key_5"])
-    print("Sunrise")
-    return home()
+@app.route("/Lgreen")
+def Lgreen():
+    sp.call(["irsend", "SEND_ONCE", "Dorm", "KEY_LIME"])
+    print("Lights On / Off")
+    return home()  
+@app.route("/Lblue")
+def Lblue():
+    sp.call(["irsend", "SEND_ONCE", "Dorm", "KEY_B"])
+    print("Lights On / Off")
+    return home()  
+@app.route("/Ppink")
+def Ppink():
+    sp.call(["irsend", "SEND_ONCE", "Dorm", "Key_Power"])
+    print("Lights On / Off")
+    return home()  
+@app.route("/Lorange")
+def Lorange():
+    sp.call(["irsend", "SEND_ONCE", "Dorm", "Key_Power"])
+    print("Lights On / Off")
+    return home()  
+@app.route("/Pblue")
+def Pblue():
+    sp.call(["irsend", "SEND_ONCE", "Dorm", "Key_Power"])
+    print("Lights On / Off")
+    return home()  
+@app.route("/Purple")
+def Purple():
+    sp.call(["irsend", "SEND_ONCE", "Dorm", "Key_Power"])
+    print("Lights On / Off")
+    return home()  
+@app.route("/LLorange")
+def LLorange():
+    sp.call(["irsend", "SEND_ONCE", "Dorm", "Key_Power"])
+    print("Lights On / Off")
+    return home()  
+@app.route("/SkyBlue")
+def SkyBlue():
+    sp.call(["irsend", "SEND_ONCE", "Dorm", "Key_Power"])
+    print("Lights On / Off")
+    return home()  
+@app.route("/Lpurple")
+def Lpurple():
+    sp.call(["irsend", "SEND_ONCE", "Dorm", "Key_Power"])
+    print("Lights On / Off")
+    return home()  
+@app.route("/Yellow")
+def Yellow():
+    sp.call(["irsend", "SEND_ONCE", "Dorm", "Key_Power"])
+    print("Lights On / Off")
+    return home()  
+@app.route("/AMarine")
+def AMarine():
+    sp.call(["irsend", "SEND_ONCE", "Dorm", "Key_Power"])
+    print("Lights On / Off")
+    return home()  
+@app.route("/HPink")
+def HPink():
+    sp.call(["irsend", "SEND_ONCE", "Dorm", "Key_Power"])
+    print("Lights On / Off")
+    return home()  
+@app.route("/Jump7")
+def Jump7():
+    sp.call(["irsend", "SEND_ONCE", "Dorm", "Key_Power"])
+    print("Lights On / Off")
+    return home()  
+@app.route("/Fade7")
+def Fade7():
+    sp.call(["irsend", "SEND_ONCE", "Dorm", "Key_Power"])
+    print("Lights On / Off")
+    return home()  
 
 if __name__ == "__main__":
     sp.call(["sudo", "/etc/init.d/lircd", "stop"])
