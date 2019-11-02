@@ -3,6 +3,7 @@ from multiprocessing import Process, Value
 import time
 import subprocess as sp
 from gpiozero import MotionSensor, LightSensor
+import datetime
 
 app = Flask(__name__)
 
@@ -59,8 +60,6 @@ def White():
     sp.call(["irsend", "SEND_ONCE", "Dorm", "KEY_W"])
     print("White")
     return home()
-
-
 @app.route("/Orange")
 def Orange():
     sp.call(["irsend", "SEND_ONCE", "Dorm", "KEY_O"])
@@ -122,8 +121,6 @@ def SkyBlue():
     sp.call(["irsend", "SEND_ONCE", "Dorm", "KEY_MAIMI_BLUE"])
     print("Sky Blue")
     return home()
-
-
 @app.route("/Lpurple")
 def Lpurple():
     sp.call(["irsend", "SEND_ONCE", "Dorm", "KEY_PURPLE_2"])
@@ -158,41 +155,24 @@ def Jump7():
     print("Jump7")
     return home()
 
-
 @app.route("/Fade7")
 def Fade7():
     sp.call(["irsend", "SEND_ONCE", "Dorm", "KEY_AUTO"])
     print("Fade")
     return home()
 
-
-_State = False
-_Motion = False
-
-ldr = LightSensor(21)
-pir = MotionSensor(20)
-
-
 def record_loop(loop_on):
+    ldr = LightSensor(21)
+    pir = MotionSensor(20)
     while True:
         if loop_on.value == True:
-            # if ldr.value > 0:
-            #     _State = True
-            # else:
-            #     _State = False
-            # if pir.when_motion:
-            #     _Motion = True
-
-            if pir.motion_detected:
-                print("Yep")
-            else:
-                print("Nope")
-            # else:
-            #     _Motion = False
-            # print(_Motion)
-            # print(_State)
-        # time.sleep(1)
-
+            print("Running")
+            try:
+                if pir.motion_detected:
+                    On()
+            except:
+                print("Your program is shit get a fucking degree!")
+            print(pir.motion_detected)
 
 if __name__ == "__main__":
     sp.call(["sudo", "/etc/init.d/lircd", "stop"])
@@ -201,3 +181,4 @@ if __name__ == "__main__":
     p.start()
     app.run(debug=True, host='0.0.0.0', port=80)
     p.join()
+
